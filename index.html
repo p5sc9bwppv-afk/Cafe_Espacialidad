@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Gentrificación: El 'Specialty Coffee' como Indicador Urbano</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Mapa de Gentrificación: El 'Specialty Coffee' como Indicador Urbano</h1>
+            <p class="subtitle">Una radiografía crítica de la transformación de Madrid</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="stats-section">
+                    <h3>⚠️ Estadísticas Clave</h3>
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-cafes">14</span>
+                        <span class="stat-label">Cafeterías mapeadas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">79%</span>
+                        <span class="stat-label">Son cadenas corporativas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50%</span>
+                        <span class="stat-label">Concentradas en Malasaña y Chamberí</span>
+                    </div>
+                </div>
+                
+                <div class="filters-section">
+                    <h3>Filtros</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Por Barrio</h4>
+                        <div class="filter-checkboxes" id="barrio-filters">
+                            <!-- Se generarán dinámicamente -->
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Tipo de Propiedad</h4>
+                        <div class="filter-checkboxes">
+                            <label>
+                                <input type="checkbox" value="Independiente" class="tipo-filter" checked>
+                                Independiente
+                            </label>
+                            <label>
+                                <input type="checkbox" value="Cadena pequeña" class="tipo-filter" checked>
+                                Cadena pequeña
+                            </label>
+                            <label>
+                                <input type="checkbox" value="Cadena mediana" class="tipo-filter" checked>
+                                Cadena mediana
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Rango de Precio</h4>
+                        <div class="filter-checkboxes">
+                            <label>
+                                <input type="checkbox" value="€" class="precio-filter" checked>
+                                <span class="price-tag price-low">€</span> Económico
+                            </label>
+                            <label>
+                                <input type="checkbox" value="€€" class="precio-filter" checked>
+                                <span class="price-tag price-medium">€€</span> Medio
+                            </label>
+                            <label>
+                                <input type="checkbox" value="€€-€€€" class="precio-filter" checked>
+                                <span class="price-tag price-high">€€€</span> Alto
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn--secondary" onclick="resetFilters()">Limpiar Filtros</button>
+                </div>
+                
+                <div class="analysis-section">
+                    <h3>Análisis Crítico</h3>
+                    <div class="critical-text">
+                        <p><strong>⚠️ Concentración Espacial:</strong> Malasaña y Chamberí concentran el 50% de los cafés de especialidad, barrios con incrementos del 40-60% en alquileres (2015-2025).</p>
+                        
+                        <p><strong>💰 Exclusión Económica:</strong> Un cortado cuesta entre 2.50-3.50€ vs. 1.20€ en un bar tradicional. Este diferencial expulsa residentes de renta media-baja.</p>
+                        
+                        <p><strong>🏪 Muerte del Comercio Local:</strong> 7.084 comercios de barrio cerraron en Madrid en el último año (2023-2024).</p>
+                        
+                        <div class="expandable-analysis">
+                            <button class="btn btn--outline btn--sm" id="expand-btn" onclick="toggleAnalysis()">Ver análisis completo</button>
+                            <div class="expanded-content" id="expanded-analysis">
+                                <p><strong>📈 Datos de Alquiler:</strong></p>
+                                <ul>
+                                    <li>Chamberí: 25.5€/m² en alquiler (septiembre 2025)</li>
+                                    <li>Malasaña: de 777€ (2015) a 891€ (2018), incremento del 14.7%</li>
+                                </ul>
+                                
+                                <p><strong>🎯 El specialty coffee es síntoma, no causa:</strong> Estos establecimientos siguen patrones de inversión inmobiliaria y gentrificación que transforman barrios populares en espacios de consumo para clases medias-altas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-section">
+                    <h4>Sobre este mapa</h4>
+                    <p>Esta herramienta visualiza la proliferación del 'specialty coffee' como indicador de procesos de gentrificación en Madrid. Los datos revelan patrones de exclusión urbana y transformación del tejido comercial tradicional.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
